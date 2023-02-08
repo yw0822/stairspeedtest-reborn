@@ -49,26 +49,26 @@ cd ..
 if [[ "$ARCH" = "x86_64" ]];then
     curl -LO https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip
     curl -LO https://github.com/joewalnes/websocketd/releases/download/v0.4.1/websocketd-0.4.1-linux_amd64.zip
-    curl -LO https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.3.1/v2ray-plugin-linux-amd64-v1.3.1.tar.gz
+    curl -LO https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.3.2/v2ray-plugin-linux-amd64-v1.3.2.tar.gz
     else if [[ "$ARCH" = "x86" ]];then
         curl -LO https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-32.zip
         curl -LO https://github.com/joewalnes/websocketd/releases/download/v0.4.1/websocketd-0.4.1-linux_386.zip
-        curl -LO https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.3.1/v2ray-plugin-linux-386-v1.3.1.tar.gz
+        curl -LO https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.3.2/v2ray-plugin-linux-386-v1.3.2.tar.gz
     else
         if [[ "$ARCH" = "aarch64" ]];then
             curl -LO https://github.com/joewalnes/websocketd/releases/download/v0.4.1/websocketd-0.4.1-linux_arm64.zip
             curl -LO https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-arm64-v8a.zip
-            curl -LO https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.3.1/v2ray-plugin-linux-arm64-v1.3.1.tar.gz
+            curl -LO https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.3.2/v2ray-plugin-linux-arm64-v1.3.2.tar.gz
             else if [[ "$ARCH" = "armhf" ]];then
                 curl -LO https://github.com/joewalnes/websocketd/releases/download/v0.4.1/websocketd-0.4.1-linux_arm.zip
                 curl -LO https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-arm32-v7a.zip
-                curl -LO https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.3.1/v2ray-plugin-linux-arm-v1.3.1.tar.gz
+                curl -LO https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.3.2/v2ray-plugin-linux-arm-v1.3.2.tar.gz
             fi
         fi
     fi
 fi
 
-unzip v2ray*.zip v2ray v2ctl
+unzip v2ray*.zip v2ray
 unzip websocketd*.zip websocketd
 if [[ "$ARCH" = "armhf" ]];then
   tar xvf v2ray-plugin*.gz v2ray-plugin_linux_arm7
@@ -77,6 +77,7 @@ else
 fi
 strip -s websocketd
 mv v2ray-plugin_* base/tools/clients/v2ray-plugin
+cp v2ray v2ctl
 mv v2ray base/tools/clients/
 mv v2ctl base/tools/clients/
 mv websocketd base/tools/gui/
